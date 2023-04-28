@@ -1,0 +1,11 @@
+/* All employees records whose salary is lower than the average salary.*/
+SELECT * FROM EMPLOYEES
+WHERE SALARY < (SELECT AVG(SALARY) FROM EMPLOYEES);
+
+/* All employees records with their ID, salary, and maximum salary in every row.*/
+SELECT EMP_ID, SALARY, (SELECT MAX(SALARY) FROM EMPLOYEES) AS MAX_SALARY
+FROM EMPLOYEES;
+
+/* EMPLOYEES table excluding columns with sensitive employee data (i.e. does not include SSN, B_DATE, SEX, ADDRESS, SALARY).*/
+
+SELECT * FROM (SELECT EMP_ID, F_NAME, L_NAME, DEP_ID FROM EMPLOYEES) AS EMP4ALL;
